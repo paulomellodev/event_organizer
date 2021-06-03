@@ -9,11 +9,11 @@ export default createGlobalStyle`
     border: 0;
   }
   :root{
-    --primaryColor: ${(props) => props.theme.primaryColor}
-    --secondaryColor: ${(props) => props.theme.secondaryColor}
-    --thirdColor: ${(props) => props.theme.thirdColor}
-    --fourthColor: ${(props) => props.theme.fourthColor}
-    --fifthColor: ${(props) => props.theme.fifthColor}
+    --primaryColor: ${(props) => props.theme.primaryColor};
+    --secondaryColor: ${(props) => props.theme.secondaryColor};
+    --thirdColor: ${(props) => props.theme.thirdColor};
+    --fourthColor: ${(props) => props.theme.fourthColor};
+    --fifthColor: ${(props) => props.theme.fifthColor};
   }
   body{
     color: var(--secondaryColor);

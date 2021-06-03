@@ -1,22 +1,32 @@
 import { useState } from "react";
-import { ThemeProvider } from "styled-components";
 import "./App.css";
+import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./styles/global";
+import { Light, Dark } from "./styles/themes";
 
 const App = () => {
-  const [theme, setTheme] = useState("Light");
+  const [lightMode, setLightMode] = useState(true);
+  const [theme, setTheme] = useState({ ...Light });
 
   const handleTheme = () => {
-    if (theme === "Light") {
-      setTheme("Dark");
+    if (lightMode) {
+      console.log(theme);
+      setTheme({ ...Dark });
+      setLightMode(false);
     } else {
-      setTheme("Light");
+      console.log(theme);
+      setTheme({ ...Light });
+      setLightMode(true);
     }
   };
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
+      <div className="App-header">
+        <button onClick={handleTheme}>Tema</button>
+        Teste Bebida
+      </div>
     </ThemeProvider>
   );
 };
