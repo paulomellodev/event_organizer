@@ -10,11 +10,9 @@ const App = () => {
 
   const handleTheme = () => {
     if (lightMode) {
-      console.log(theme);
       setTheme({ ...Dark });
       setLightMode(false);
     } else {
-      console.log(theme);
       setTheme({ ...Light });
       setLightMode(true);
     }
