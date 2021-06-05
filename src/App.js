@@ -3,6 +3,8 @@ import "./App.css";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./styles/global";
 import { Light, Dark } from "./styles/themes";
+import Header from "./components/Header";
+import Routes from "./routes";
 
 const App = () => {
   const [lightMode, setLightMode] = useState(true);
@@ -21,10 +23,8 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <div className="App-header">
-        <button onClick={handleTheme}>Tema</button>
-        Teste Bebida
-      </div>
+      <Header light={lightMode} handleTheme={handleTheme} />
+      <Routes />
     </ThemeProvider>
   );
 };

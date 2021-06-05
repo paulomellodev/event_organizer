@@ -31,6 +31,7 @@ export default createGlobalStyle`
   }
   button{
     cursor: pointer;
+    color: var(--fifthColor);
   }
   a{
     text-decoration: none;
