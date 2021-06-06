@@ -14,14 +14,18 @@ export const EventsProvider = ({ children }) => {
   const allEvents = Object.keys(events);
 
   const addBeverageToEvent = (event, item) => {
+    console.log(item, event);
     const eventBeverages = events[event];
     if (event === "Casamento") {
+      console.log(event);
       return setEvents({ ...events, Casamento: [...eventBeverages, item] });
     }
     if (event === "Formatura") {
+      console.log(event);
       return setEvents({ ...events, Formatura: [...eventBeverages, item] });
     }
     if (event === "Confraternização") {
+      console.log(event);
       return setEvents({
         ...events,
         Confraternização: [...eventBeverages, item],
