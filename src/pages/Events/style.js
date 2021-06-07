@@ -5,7 +5,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   max-width: 700px;
   margin: auto;
@@ -42,6 +42,27 @@ export const Container = styled.div`
   }
 `;
 
+export const Content = styled.section`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  h2 {
+    text-align: center;
+  }
+  a {
+    color: var(--fourthColor);
+  }
+  @media (min-width: 700px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+`;
+
 export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -52,5 +73,47 @@ export const ButtonContainer = styled.div`
     button {
       margin: 0 10px;
     }
+  }
+`;
+
+export const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  padding: 10px;
+  border: 2px solid var(--fourthColor);
+  margin: 10px 0;
+  border-radius: 5px;
+  @media (min-width: 700px) {
+    width: 70%;
+    flex-direction: row;
+  }
+  hr {
+    border: 1px solid var(--thirdColor);
+  }
+
+  div.main_Info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    img {
+      width: 30%;
+      height: 150px;
+      object-fit: contain;
+      margin: 10px;
+    }
+    p {
+      font-weight: 700;
+      color: var(--fourthColor);
+      span {
+        font-weight: 400;
+        color: var(--secondaryColor);
+      }
+    }
+  }
+
+  div.removeFromEvent {
+    display: flex;
+    flex-direction: column;
   }
 `;

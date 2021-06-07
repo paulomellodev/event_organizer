@@ -14,19 +14,15 @@ export const EventsProvider = ({ children }) => {
   const allEvents = Object.keys(events);
 
   const addBeverageToEvent = (event, item) => {
-    console.log(item, event);
     const eventBeverages = events[event];
     if (event === "Casamento") {
-      console.log(event);
-      return setEvents({ ...events, Casamento: [...eventBeverages, item] });
+      setEvents({ ...events, Casamento: [...eventBeverages, item] });
     }
     if (event === "Formatura") {
-      console.log(event);
-      return setEvents({ ...events, Formatura: [...eventBeverages, item] });
+      setEvents({ ...events, Formatura: [...eventBeverages, item] });
     }
     if (event === "Confraternização") {
-      console.log(event);
-      return setEvents({
+      setEvents({
         ...events,
         Confraternização: [...eventBeverages, item],
       });
@@ -37,16 +33,17 @@ export const EventsProvider = ({ children }) => {
     const eventBeverages = events[event];
 
     if (event === "Casamento") {
-      const beveragesKeeped = eventBeverages.map((item) => item.id !== id);
-      return setEvents({ ...events, Casamento: [...beveragesKeeped] });
+      const beveragesKeeped = eventBeverages.filter((item) => item.id !== id);
+      console.log(beveragesKeeped);
+      setEvents({ ...events, Casamento: [...beveragesKeeped] });
     }
     if (event === "Formatura") {
-      const beveragesKeeped = eventBeverages.map((item) => item.id !== id);
-      return setEvents({ ...events, Formatura: [...beveragesKeeped] });
+      const beveragesKeeped = eventBeverages.filter((item) => item.id !== id);
+      setEvents({ ...events, Formatura: [...beveragesKeeped] });
     }
     if (event === "Confraternização") {
-      const beveragesKeeped = eventBeverages.map((item) => item.id !== id);
-      return setEvents({ ...events, Confraternização: [...beveragesKeeped] });
+      const beveragesKeeped = eventBeverages.filter((item) => item.id !== id);
+      setEvents({ ...events, Confraternização: [...beveragesKeeped] });
     }
   };
 

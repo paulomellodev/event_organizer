@@ -1,9 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import Button from "../../components/Button";
 import { EventsContext } from "../../providers/Events";
-import { Content } from "../Beverages/styles";
-import { ButtonContainer, Container } from "./style";
+import { ButtonContainer, Card, Container, Content } from "./style";
 
 const Events = () => {
   const history = useHistory();
@@ -14,13 +13,13 @@ const Events = () => {
   const { events, allEvents, removeBeverageFromEvent } =
     useContext(EventsContext);
 
-  const [beverages, setBeverages] = useState([]);
-
-  useEffect(() => {
-    if (event) {
-      setBeverages(events[event]);
-    }
-  }, [event]);
+  // useEffect(() => {
+  //   if (event) {
+  //     setBeverages(events[event]);
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [events]);
+  console.log(events[event]);
 
   const othersEvents = allEvents.filter((item) => item !== event);
 
@@ -72,7 +71,42 @@ const Events = () => {
             );
           })}
         </ButtonContainer>
-        <Content></Content>
+        <Content>
+          {events[event].length === 0 ? (
+            <>
+              <h2>Nenhuma bebida adicionada neste evento.</h2>
+              <p>
+                Vá a página de bebidas, <a href="/beverages">clicando aqui</a>
+              </p>
+            </>
+          ) : (
+            <>
+              {events[event].map((beverage, index) => {
+                return (
+                  <Card key={index}>
+                    <div className="main_Info">
+                      <img src={beverage.image_url} alt={beverage.name} />
+                      <span>
+                        <h2>{beverage.name}</h2>
+                        <span>{beverage.tagline}</span>
+                      </span>
+                    </div>
+
+                    <div className="removeFromEvent">
+                      <Button
+                        onClick={() =>
+                          removeBeverageFromEvent(event, beverage.id)
+                        }
+                      >
+                        Remover bebida
+                      </Button>
+                    </div>
+                  </Card>
+                );
+              })}
+            </>
+          )}
+        </Content>
       </Container>
     );
   }
