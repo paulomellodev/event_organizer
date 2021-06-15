@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { toast } from "react-toastify";
 
 // criar contexto das bebidas
 export const EventsContext = createContext([]);
@@ -27,24 +28,32 @@ export const EventsProvider = ({ children }) => {
         Confraternização: [...eventBeverages, item],
       });
     }
+    toast.success(`Bebida foi adicionada a(o) ${event}!`);
   };
 
   const removeBeverageFromEvent = (event, id) => {
     const eventBeverages = events[event];
 
+    let indexId = 0;
+
+    for (let i = 0; i < eventBeverages.length; i++) {
+      let beverage = eventBeverages[i];
+      if (beverage.id === id) {
+        indexId = i;
+      }
+    }
+    eventBeverages.splice(indexId, 1);
+
     if (event === "Casamento") {
-      const beveragesKeeped = eventBeverages.filter((item) => item.id !== id);
-      console.log(beveragesKeeped);
-      setEvents({ ...events, Casamento: [...beveragesKeeped] });
+      setEvents({ ...events, Casamento: [...eventBeverages] });
     }
     if (event === "Formatura") {
-      const beveragesKeeped = eventBeverages.filter((item) => item.id !== id);
-      setEvents({ ...events, Formatura: [...beveragesKeeped] });
+      setEvents({ ...events, Formatura: [...eventBeverages] });
     }
     if (event === "Confraternização") {
-      const beveragesKeeped = eventBeverages.filter((item) => item.id !== id);
-      setEvents({ ...events, Confraternização: [...beveragesKeeped] });
+      setEvents({ ...events, Confraternização: [...eventBeverages] });
     }
+    toast.success(`Bebida removida com sucesso!`);
   };
 
   return (

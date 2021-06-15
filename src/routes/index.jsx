@@ -2,6 +2,7 @@ import { Route, Switch } from "react-router";
 import Beverages from "../pages/Beverages";
 import Events from "../pages/Events";
 import Home from "../pages/Home";
+import NotFound from "../pages/NotFound";
 
 const Routes = () => {
   return (
@@ -18,6 +19,9 @@ const Routes = () => {
         </Route>
         <Route path="/beverages">
           <Beverages />
+        </Route>
+        <Route>
+          <NotFound />
         </Route>
       </Switch>
     </>

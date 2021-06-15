@@ -5,6 +5,8 @@ import GlobalStyle from "./styles/global";
 import { Light, Dark } from "./styles/themes";
 import Header from "./components/Header";
 import Routes from "./routes";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const [lightMode, setLightMode] = useState(true);
@@ -24,6 +26,17 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Header light={lightMode} handleTheme={handleTheme} />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Routes />
     </ThemeProvider>
   );
